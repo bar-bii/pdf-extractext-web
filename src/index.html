@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Extractext</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">📄</span>
+      <div>
+        <h1>PDF Extractext</h1>
+        <p class="subtitle">Extrae texto de tus PDF y guárdalo sin duplicados</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span id="health-badge" class="badge badge--pending" role="status" aria-live="polite">
+        Comprobando…
+      </span>
+      <a class="link" href="/api/docs" target="_blank" rel="noopener">API docs ↗</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Subida -->
+    <section class="card" aria-labelledby="upload-title">
+      <h2 id="upload-title">Subir un PDF</h2>
+      <form id="upload-form">
+        <label id="drop-zone" class="drop-zone" for="file-input" tabindex="0">
+          <input id="file-input" type="file" accept="application/pdf,.pdf" hidden />
+          <span class="drop-icon" aria-hidden="true">⬆️</span>
+          <span class="drop-text">
+            Arrastra un PDF aquí o <strong>haz clic para elegirlo</strong>
+          </span>
+          <span class="drop-hint">Máximo 15 MB · solo PDF</span>
+        </label>
+        <div id="file-preview" class="file-preview" hidden></div>
+        <button id="upload-button" class="btn btn--primary" type="submit" disabled>
+          Extraer texto
+        </button>
+      </form>
+
+      <div id="result" class="result" hidden aria-live="polite">
+        <div class="result-head">
+          <h3>Texto extraído</h3>
+          <button id="copy-button" class="btn btn--ghost" type="button">Copiar</button>
+        </div>
+        <pre id="result-text" class="text-output"></pre>
+        <p class="meta">SHA-256: <code id="result-checksum"></code></p>
+      </div>
+    </section>
+
+    <!-- Documentos -->
+    <section class="card" aria-labelledby="docs-title">
+      <div class="section-head">
+        <h2 id="docs-title">Documentos guardados</h2>
+        <button id="refresh-button" class="btn btn--ghost" type="button">Actualizar</button>
+      </div>
+      <div id="documents" class="documents" aria-live="polite">
+        <p class="empty">Cargando…</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal ver/editar -->
+  <dialog id="doc-dialog" class="dialog">
+    <form method="dialog" class="dialog-form">
+      <div class="section-head">
+        <h2 id="dialog-title">Documento</h2>
+        <button class="btn btn--ghost" value="close" aria-label="Cerrar">✕</button>
+      </div>
+      <p class="meta">SHA-256: <code id="dialog-checksum"></code></p>
+      <textarea id="dialog-text" class="textarea" rows="14"></textarea>
+      <div class="dialog-actions">
+        <button class="btn btn--ghost" value="close" type="submit">Cancelar</button>
+        <button id="dialog-save" class="btn btn--primary" value="save" type="submit">
+          Guardar cambios
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
