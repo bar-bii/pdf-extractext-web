@@ -1,0 +1,15 @@
+{
+  "name": "pdf-extractext-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Front end estático de PDF Extractext, servido por nginx con proxy hacia la API",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1",
+    "vitest": "^5.1.1"
+  }
+}
