@@ -15,6 +15,8 @@ navegador ──► web (nginx :80) ──/api/*──► app (FastAPI :8000) �
 - La URL del backend es configuración de entorno (`API_UPSTREAM`), nunca código.
 - Contenedor sin estado y efímero.
 
+Esto se despliega con el repo aparte [`bar-bii/pdf-extractext-deploy`](https://github.com/bar-bii/pdf-extractext-deploy).
+
 ## Estructura
 
 ```
