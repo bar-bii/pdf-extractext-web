@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+tests
+coverage
+README.md
+AGENTS.md
+package.json
+package-lock.json
+vitest.config.js
+.dockerignore
+.gitignore
